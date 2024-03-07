@@ -3,10 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,7 +19,6 @@
 				<Menu mnemonicParsing="false" text="File">
 					<items>
 						<MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem fx:id="loadChoice" mnemonicParsing="false" onAction="#handleLoadButton" text="Load" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="About">
@@ -29,88 +28,103 @@
 				</Menu>
 			</menus>
 		</MenuBar>
-		<Label layoutX="43.0" layoutY="80.0" text="Pocket">
+		<Label layoutX="42.0" layoutY="52.0" text="Pocket">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Label>
-		<Label layoutX="147.0" layoutY="285.0" text="Material">
+		<Label layoutX="148.0" layoutY="276.0" text="Material">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Label>
-		<Label layoutX="43.0" layoutY="285.0" text="Style">
+		<Label layoutX="43.0" layoutY="276.0" text="Collar">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Label>
-		<Label layoutX="147.0" layoutY="222.0" text="Color">
+		<Label layoutX="151.0" layoutY="193.0" text="Color">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Label>
-		<Label layoutX="43.0" layoutY="222.0" text="Back">
+		<Label layoutX="33.0" layoutY="128.0" text="Quantity">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Label>
-		<Label layoutX="147.0" layoutY="154.0" text="Size">
+		<Label layoutX="151.0" layoutY="128.0" text="Size">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Label>
-		<Label layoutX="43.0" layoutY="154.0" text="Shoulder">
+		<Label layoutX="148.0" layoutY="52.0" text="Name">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Label>
-		<Label layoutX="147.0" layoutY="80.0" text="Name">
-			<font>
-				<Font size="24.0" />
-			</font>
-		</Label>
-		<ComboBox fx:id="pocketComboBox" layoutX="40.0" layoutY="115.0" prefHeight="25.0" prefWidth="78.0" />
-		<ComboBox fx:id="shoulderLengthComboBox" layoutX="40.0" layoutY="189.0" prefHeight="25.0" prefWidth="78.0" />
-		<ComboBox fx:id="sizeComboBox" layoutX="147.0" layoutY="189.0" prefHeight="25.0" prefWidth="78.0" />
-		<ComboBox fx:id="backLengthComboBox" layoutX="40.0" layoutY="257.0" prefHeight="25.0" prefWidth="78.0" />
-		<ComboBox fx:id="colorComboBox" layoutX="147.0" layoutY="257.0" prefHeight="25.0" prefWidth="78.0" />
-		<ComboBox fx:id="styleCombobox" layoutX="43.0" layoutY="320.0" prefHeight="25.0" prefWidth="78.0" />
-		<ComboBox fx:id="materialComboBox" layoutX="147.0" layoutY="320.0" prefHeight="25.0" prefWidth="78.0" />
-		<Button fx:id="editButton" layoutX="43.0" layoutY="384.0" mnemonicParsing="false" text="Edit">
+		<ComboBox fx:id="pocketComboBox" layoutX="41.0" layoutY="103.0" prefHeight="25.0" prefWidth="78.0" />
+		<ComboBox fx:id="sizeComboBox" layoutX="148.0" layoutY="171.0" prefHeight="25.0" prefWidth="78.0" />
+		<ComboBox fx:id="quantityComboBox" layoutX="41.0" layoutY="171.0" prefHeight="25.0" prefWidth="78.0" />
+		<ComboBox fx:id="colorComboBox" layoutX="148.0" layoutY="237.0" prefHeight="25.0" prefWidth="78.0" />
+		<ComboBox fx:id="collarComboBox" layoutX="41.0" layoutY="308.0" prefHeight="25.0" prefWidth="78.0" />
+		<ComboBox fx:id="materialComboBox" layoutX="148.0" layoutY="308.0" prefHeight="25.0" prefWidth="78.0" />
+		<Button fx:id="editButton" layoutX="101.0" layoutY="410.0" mnemonicParsing="false" onAction="#handleEdit" text="Edit">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Button>
-		<Button fx:id="saveButton" layoutX="140.0" layoutY="384.0" mnemonicParsing="false" text="Save">
+		<Button fx:id="saveButton" layoutX="13.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleAdd" text="Add">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Button>
-		<Button fx:id="deleteButton" layoutX="506.0" layoutY="384.0" mnemonicParsing="false" text="Delete">
+		<Button fx:id="deleteButton" layoutX="181.0" layoutY="410.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="51.0" prefWidth="108.0" text="Delete">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Button>
-		<Button fx:id="viewButton" layoutX="403.0" layoutY="384.0" mnemonicParsing="false" text="View" onAction="#onShowRequestsButtonClick">
+
+
+
+		<Button fx:id="viewButton" layoutX="458.0" layoutY="410.0" mnemonicParsing="false" onAction="#onShowRequestsButtonClick" text="View">
+
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Button>
-		<Button fx:id="requestButton" layoutX="268.0" layoutY="384.0" mnemonicParsing="false" text="Request" onAction="#onRequestButtonClick">
+		<Button fx:id="requestButton" layoutX="320.0" layoutY="410.0" mnemonicParsing="false" onAction="#handleRequest" text="Request">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Button>
-		<TextField fx:id="nameTextField" layoutX="148.0" layoutY="115.0" prefHeight="25.0" prefWidth="64.0" />
-		<TextArea fx:id="presetsTextArea" layoutX="651.0" layoutY="37.0" prefHeight="157.0" prefWidth="200.0" />
-		<TextArea fx:id="designedTextArea" layoutX="651.0" layoutY="227.0" prefHeight="157.0" prefWidth="200.0" />
-		<Button fx:id="submitButton" layoutX="701.0" layoutY="410.0" mnemonicParsing="false" text="Submit">
+		<TextField fx:id="nameTextField" layoutX="148.0" layoutY="103.0" prefHeight="25.0" prefWidth="64.0" />
+		<Button fx:id="submitButton" layoutX="750.0" layoutY="411.0" mnemonicParsing="false" text="Submit">
 			<font>
 				<Font size="24.0" />
 			</font>
 		</Button>
-		<Label layoutX="737.0" layoutY="14.0" text="Presets" textFill="#f51010" />
-		<Label layoutX="736.0" layoutY="206.0" text="Designed" textFill="#f51010" />
-		<ImageView fx:id="shirtImageView" fitHeight="346.0" fitWidth="339.0" layoutX="268.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
+		<Label layoutX="731.0" layoutY="14.0" text="Presets" textFill="#f51010" />
+		<Label layoutX="730.0" layoutY="214.0" text="Designed" textFill="#f51010" />
+		<ImageView fx:id="shirtImageView" fitHeight="323.0" fitWidth="339.0" layoutX="268.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
+		<ListView fx:id="designedListView" layoutX="650.0" layoutY="235.0" prefHeight="164.0" prefWidth="200.0" />
+		<ListView fx:id="presetsListView" layoutX="650.0" layoutY="46.0" prefHeight="164.0" prefWidth="200.0" />
+		<Label layoutX="45.0" layoutY="197.0" text="Sleeve">
+			<font>
+				<Font size="24.0" />
+			</font>
+		</Label>
+		<ComboBox fx:id="sleeveComboBox" layoutX="40.0" layoutY="237.0" prefHeight="25.0" prefWidth="78.0" />
+		<TextField fx:id="textTextField" layoutX="101.0" layoutY="374.0" prefHeight="25.0" prefWidth="64.0" />
+		<Label layoutX="111.0" layoutY="333.0" text="Text">
+			<font>
+				<Font size="24.0" />
+			</font>
+		</Label>
+		<Button fx:id="saveButton" layoutX="636.0" layoutY="413.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="51.0" prefWidth="108.0" text="Save Shirt">
+			<font>
+				<Font size="18.0" />
+			</font>
+		</Button>
 	</children>
 </AnchorPane>
